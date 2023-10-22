@@ -2,7 +2,9 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { MensajeController } from './infraestructura/controladores/mensaje/mensaje.controller';
 import * as fs from 'fs';
+import { ObtenerMensajeCasoUso } from './aplicacion/casos-uso/obtener-mensaje.caso-uso';
 
 @Module({
   imports: [
@@ -22,7 +24,7 @@ import * as fs from 'fs';
       },
     }),
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [AppController, MensajeController],
+  providers: [AppService, ObtenerMensajeCasoUso],
 })
 export class AppModule {}
