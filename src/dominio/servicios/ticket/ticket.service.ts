@@ -9,4 +9,8 @@ export class TicketService {
     this.tickets.push(ticket);
     return ticket;
   }
+
+  findOne(id: string): Ticket | undefined {
+    return this.tickets.find((ticket) => ticket.id === id);
+  }
 }

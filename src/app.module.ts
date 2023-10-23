@@ -15,6 +15,7 @@ import { AppResolver } from './infraestructura/resolvers/app/app.resolver';
 import { Ticket } from './dominio/entidades/ticket.entity';
 import { APP_FILTER } from '@nestjs/core';
 import { HttpExceptionFilter } from './infraestructura/filtros/http-exception/http-exception.filter';
+import { ConsultarTicketCasoUso } from './aplicacion/casos-uso/consultar-ticket.caso-uso';
 
 @Module({
   imports: [
@@ -46,6 +47,7 @@ import { HttpExceptionFilter } from './infraestructura/filtros/http-exception/ht
     TicketResolver,
     CrearTicketCasoUso,
     AppResolver,
+    ConsultarTicketCasoUso,
     {
       provide: APP_FILTER,
       useClass: HttpExceptionFilter,

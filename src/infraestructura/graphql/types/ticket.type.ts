@@ -4,7 +4,7 @@ import { Field, ID, ObjectType } from '@nestjs/graphql';
 export class TicketType {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   @Field((type) => ID)
-  id: number;
+  id: string;
 
   @Field()
   descripcion: string;
