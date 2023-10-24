@@ -1,4 +1,3 @@
-// src/ticket/dto/csv-record.dto.ts
 import {
   IsInt,
   IsNotEmpty,

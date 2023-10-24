@@ -1,4 +1,3 @@
-// src/mock/mock.controller.ts
 import { Controller, Get, Param, ParseIntPipe } from '@nestjs/common';
 import { MockResponseDto } from 'src/aplicacion/dtos/mock-response.dto';
 import { MockService } from 'src/dominio/servicios/mock/mock.service';

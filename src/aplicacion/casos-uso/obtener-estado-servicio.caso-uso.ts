@@ -1,4 +1,3 @@
-// src/mock/use-cases/obtain-service-state.usecase.ts
 import { Injectable } from '@nestjs/common';
 import { MockResponseDto } from '../dtos/mock-response.dto';
 
