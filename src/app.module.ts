@@ -16,9 +16,11 @@ import { Ticket } from './dominio/entidades/ticket.entity';
 import { APP_FILTER } from '@nestjs/core';
 import { HttpExceptionFilter } from './infraestructura/filtros/http-exception/http-exception.filter';
 import { ConsultarTicketCasoUso } from './aplicacion/casos-uso/consultar-ticket.caso-uso';
+import { ConsultarTicketsFiltroCasoUso } from './aplicacion/casos-uso/consultar-tickets-filtro.caso-uso';
 
 @Module({
   imports: [
+    TypeOrmModule.forFeature([Ticket]),
     TypeOrmModule.forRootAsync({
       useFactory: () => {
         return {
@@ -48,6 +50,7 @@ import { ConsultarTicketCasoUso } from './aplicacion/casos-uso/consultar-ticket.
     CrearTicketCasoUso,
     AppResolver,
     ConsultarTicketCasoUso,
+    ConsultarTicketsFiltroCasoUso,
     {
       provide: APP_FILTER,
       useClass: HttpExceptionFilter,
