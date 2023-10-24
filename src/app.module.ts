@@ -19,6 +19,9 @@ import { ConsultarTicketCasoUso } from './aplicacion/casos-uso/consultar-ticket.
 import { ConsultarTicketsFiltroCasoUso } from './aplicacion/casos-uso/consultar-tickets-filtro.caso-uso';
 import { FileUploadService } from './dominio/servicios/file-upload/file-upload.service';
 import { FileUploadController } from './infraestructura/controladores/file-upload/file-upload.controller';
+import { MockService } from './dominio/servicios/mock/mock.service';
+import { MockController } from './infraestructura/controladores/mock/mock.controller';
+import { ObtenerEstadoServicio } from './aplicacion/casos-uso/obtener-estado-servicio.caso-uso';
 
 @Module({
   imports: [
@@ -48,6 +51,7 @@ import { FileUploadController } from './infraestructura/controladores/file-uploa
     MensajeController,
     TicketController,
     FileUploadController,
+    MockController,
   ],
   providers: [
     AppService,
@@ -58,11 +62,13 @@ import { FileUploadController } from './infraestructura/controladores/file-uploa
     AppResolver,
     ConsultarTicketCasoUso,
     ConsultarTicketsFiltroCasoUso,
+    ObtenerEstadoServicio,
     {
       provide: APP_FILTER,
       useClass: HttpExceptionFilter,
     },
     FileUploadService,
+    MockService,
   ],
 })
 export class AppModule {}
