@@ -17,6 +17,8 @@ import { APP_FILTER } from '@nestjs/core';
 import { HttpExceptionFilter } from './infraestructura/filtros/http-exception/http-exception.filter';
 import { ConsultarTicketCasoUso } from './aplicacion/casos-uso/consultar-ticket.caso-uso';
 import { ConsultarTicketsFiltroCasoUso } from './aplicacion/casos-uso/consultar-tickets-filtro.caso-uso';
+import { FileUploadService } from './dominio/servicios/file-upload/file-upload.service';
+import { FileUploadController } from './infraestructura/controladores/file-upload/file-upload.controller';
 
 @Module({
   imports: [
@@ -41,7 +43,12 @@ import { ConsultarTicketsFiltroCasoUso } from './aplicacion/casos-uso/consultar-
       autoSchemaFile: true,
     }),
   ],
-  controllers: [AppController, MensajeController, TicketController],
+  controllers: [
+    AppController,
+    MensajeController,
+    TicketController,
+    FileUploadController,
+  ],
   providers: [
     AppService,
     ObtenerMensajeCasoUso,
@@ -55,6 +62,7 @@ import { ConsultarTicketsFiltroCasoUso } from './aplicacion/casos-uso/consultar-
       provide: APP_FILTER,
       useClass: HttpExceptionFilter,
     },
+    FileUploadService,
   ],
 })
 export class AppModule {}
