@@ -1,6 +1,5 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-// src/tickets/tickets.entity.ts
 @Entity()
 export class Ticket {
   @PrimaryGeneratedColumn()
