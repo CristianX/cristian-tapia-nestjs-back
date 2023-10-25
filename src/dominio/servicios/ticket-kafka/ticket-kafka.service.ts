@@ -1,4 +1,3 @@
-// src/tickets/tickets.service.ts
 import { Injectable } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -6,6 +5,7 @@ import { CreateTicketDto } from 'src/aplicacion/dtos/create-ticket-dto';
 import { Ticket } from 'src/dominio/entidades/ticket.entity';
 import { KafkaService } from 'src/infraestructura/kafka/kafka/kafka.service';
 import { Repository } from 'typeorm';
+import { SearchTicketsDto } from 'src/aplicacion/dtos/search-ticket.dto';
 
 @Injectable()
 export class TicketsKafkaService {
@@ -54,10 +54,44 @@ export class TicketsKafkaService {
       where: { id: ticketId },
     });
     if (!ticket) {
-      // Lanzar una excepción o manejar el error de alguna manera
       throw new Error('Ticket no encontrado');
     }
     ticket.status = newState;
     await this.ticketRepository.save(ticket);
+  }
+
+  async searchTickets(dto: SearchTicketsDto): Promise<Ticket[]> {
+    const { start, end, priority, category, status, skip, limit } = dto;
+
+    const queryBuilder = this.ticketRepository.createQueryBuilder('ticket');
+
+    if (start && end) {
+      queryBuilder.where('ticket.createdAt BETWEEN :start AND :end', {
+        start,
+        end,
+      });
+    }
+
+    if (priority) {
+      queryBuilder.andWhere('ticket.priority = :priority', { priority });
+    }
+
+    if (category) {
+      queryBuilder.andWhere('ticket.category = :category', { category });
+    }
+
+    if (status) {
+      queryBuilder.andWhere('ticket.status = :status', { status });
+    }
+
+    if (typeof skip === 'number') {
+      queryBuilder.skip(skip);
+    }
+
+    if (typeof limit === 'number') {
+      queryBuilder.take(limit);
+    }
+
+    return await queryBuilder.getMany();
   }
 }

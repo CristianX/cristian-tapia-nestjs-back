@@ -74,4 +74,84 @@ describe('TicketsKafkaService', () => {
     expect(mockKafkaService.enviarMensaje).toBeCalled();
     expect(mockRepository.save).toBeCalled();
   });
+
+  it('debe crear ticket con la categoría "support"', async () => {
+    mockRepository.create.mockReturnValue({});
+    mockHttpService.get.mockReturnValue(
+      of({
+        status: 200,
+        data: {},
+      }),
+    );
+
+    const dto: CreateTicketDto = {
+      title: 'Test Soporte',
+      description: 'Test Descripcion',
+      priority: 'medium',
+      category: 'support',
+      status: 'pending',
+    };
+
+    await service.createTicket(dto);
+    expect(mockKafkaService.enviarMensaje).toBeCalled();
+    expect(mockRepository.save).toBeCalled();
+  });
+
+  it('debe crear ticket con la categoría "error"', async () => {
+    mockRepository.create.mockReturnValue({});
+    mockHttpService.get.mockReturnValue(
+      of({
+        status: 200,
+        data: {},
+      }),
+    );
+
+    const dto: CreateTicketDto = {
+      title: 'Test Error',
+      description: 'Test Descripcion',
+      priority: 'low',
+      category: 'error',
+      status: 'pending',
+    };
+
+    await service.createTicket(dto);
+    expect(mockKafkaService.enviarMensaje).toBeCalled();
+    expect(mockRepository.save).toBeCalled();
+  });
+
+  it('no debe enviar mensaje a Kafka si la respuesta HTTP no es 200', async () => {
+    mockRepository.create.mockReturnValue({});
+    mockHttpService.get.mockReturnValue(
+      of({
+        status: 404,
+        data: {},
+      }),
+    );
+
+    const dto: CreateTicketDto = {
+      title: 'Test Error HTTP',
+      description: 'Test Descripcion',
+      priority: 'low',
+      category: 'error',
+      status: 'pending',
+    };
+
+    await service.createTicket(dto);
+    expect(mockKafkaService.enviarMensaje).not.toBeCalled();
+    expect(mockRepository.save).toBeCalled();
+  });
+
+  it('debe actualizar el estado de un ticket', async () => {
+    const existingTicket = {
+      id: 'test-id',
+      status: 'pending',
+    };
+    mockRepository.findOne.mockReturnValue(existingTicket);
+
+    await service.updateTicketStatus('test-id', 'approved');
+    expect(mockRepository.save).toBeCalledWith({
+      ...existingTicket,
+      status: 'approved',
+    });
+  });
 });

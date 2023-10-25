@@ -22,7 +22,9 @@ export class KafkaService {
     topic: string,
     eachMessage: (data: any) => Promise<void>,
   ): Promise<void> {
-    const consumer = this.kafkaClient.consumer({ groupId: 'my-group' });
+    const consumer = this.kafkaClient.consumer({
+      groupId: 'technical_support_tickets',
+    });
     await consumer.connect();
     await consumer.subscribe({ topic });
     await consumer.run({ eachMessage });

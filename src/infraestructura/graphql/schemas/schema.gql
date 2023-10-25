@@ -1,0 +1,63 @@
+enum Priority {
+  HIGH
+  MEDIUM
+  LOW
+}
+
+enum Category {
+  INCIDENT
+  SUPPORT
+  ERROR
+}
+
+enum Status {
+  PENDING
+  VERIFIED
+  APPROVED
+  REJECTED
+}
+
+type TicketType {
+  id: String!
+  title: String!
+  description: String!
+  priority: Priority!
+  category: Category!
+  status: Status!
+}
+
+input CreateTicketDto {
+  title: String!
+  description: String!
+  priority: Priority!
+  category: Category!
+}
+
+input SearchTicketsDto {
+  start: String
+  end: String
+  priority: Priority
+  category: Category
+  status: Status
+  skip: Int
+  limit: Int
+}
+
+input TicketFiltroDto {
+  descripcion: String
+  priority: Priority
+  category: Category
+  status: Status
+  limit: Int
+  offset: Int
+}
+
+type Query {
+  ticket(id: String!): TicketType
+  tickets(input: TicketFiltroDto): [TicketType]
+  searchTickets(input: SearchTicketsDto): [TicketType]
+}
+
+type Mutation {
+  createTicket(input: CreateTicketDto!): TicketType
+}

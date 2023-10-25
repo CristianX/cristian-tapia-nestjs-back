@@ -3,6 +3,7 @@ import { ConsultarTicketCasoUso } from 'src/aplicacion/casos-uso/consultar-ticke
 import { ConsultarTicketsFiltroCasoUso } from 'src/aplicacion/casos-uso/consultar-tickets-filtro.caso-uso';
 import { CrearTicketKafkaCasoDeUso } from 'src/aplicacion/casos-uso/crear-ticket-kafka.caso-uso';
 import { CreateTicketDto } from 'src/aplicacion/dtos/create-ticket-dto';
+import { SearchTicketsDto } from 'src/aplicacion/dtos/search-ticket.dto';
 import { TicketFiltroDto } from 'src/aplicacion/dtos/ticket-filtro.dto';
 import { Ticket } from 'src/dominio/entidades/ticket.entity';
 import {
@@ -49,6 +50,16 @@ export class TicketResolver {
     @Args('filtro', { nullable: true }) filtro: TicketFiltroDto,
   ): Promise<TicketType[]> {
     const tickets = await this.consultarTicketsFiltroCasoUso.execute(filtro);
+    return tickets.map(mapTicketToTicketType);
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  @Query((returns) => [TicketType])
+  async searchTickets(
+    @Args('input') dto: SearchTicketsDto,
+  ): Promise<TicketType[]> {
+    const tickets: Ticket[] =
+      await this.consultarTicketsFiltroCasoUso.execute(dto);
     return tickets.map(mapTicketToTicketType);
   }
 }

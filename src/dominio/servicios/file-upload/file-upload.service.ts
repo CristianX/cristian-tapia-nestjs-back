@@ -3,7 +3,7 @@ import * as csvParser from 'csv-parser';
 import * as fs from 'fs';
 import { validateOrReject } from 'class-validator';
 import { plainToClass } from 'class-transformer';
-import { CsvRecordDto } from 'src/aplicacion/dtos/csv-recort.dto';
+import { CsvRecordDto } from 'src/aplicacion/dtos/csv-record.dto';
 
 @Injectable()
 export class FileUploadService {
