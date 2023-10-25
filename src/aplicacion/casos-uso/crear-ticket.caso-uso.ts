@@ -14,7 +14,7 @@ export class CrearTicketCasoUso {
       now.getHours().toString().padStart(2, '0') +
       now.getMinutes().toString().padStart(2, '0') +
       now.getSeconds().toString().padStart(2, '0');
-    ticket.descripcion = ticketCreateDto.descripcion;
+    ticket.description = ticketCreateDto.descripcion;
 
     return this.ticketService.create(ticket);
   }

@@ -22,6 +22,9 @@ import { FileUploadController } from './infraestructura/controladores/file-uploa
 import { MockService } from './dominio/servicios/mock/mock.service';
 import { MockController } from './infraestructura/controladores/mock/mock.controller';
 import { ObtenerEstadoServicio } from './aplicacion/casos-uso/obtener-estado-servicio.caso-uso';
+import { KafkaService } from './infraestructura/kafka/kafka/kafka.service';
+import { HttpModule } from '@nestjs/axios';
+import { CrearTicketKafkaCasoDeUso } from './aplicacion/casos-uso/crear-ticket-kafka.caso-uso';
 
 @Module({
   imports: [
@@ -45,6 +48,7 @@ import { ObtenerEstadoServicio } from './aplicacion/casos-uso/obtener-estado-ser
       driver: ApolloDriver,
       autoSchemaFile: true,
     }),
+    HttpModule,
   ],
   controllers: [
     AppController,
@@ -69,6 +73,8 @@ import { ObtenerEstadoServicio } from './aplicacion/casos-uso/obtener-estado-ser
     },
     FileUploadService,
     MockService,
+    KafkaService,
+    CrearTicketKafkaCasoDeUso,
   ],
 })
 export class AppModule {}

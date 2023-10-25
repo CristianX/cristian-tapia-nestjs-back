@@ -6,6 +6,9 @@ export class TicketFiltroDto {
   descripcion?: string;
 
   @Field({ nullable: true })
+  priority?: 'high' | 'medium' | 'low';
+
+  @Field({ nullable: true })
   limite?: number;
 
   @Field({ nullable: true })

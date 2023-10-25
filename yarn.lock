@@ -1073,6 +1073,11 @@
     "lodash.omit" "4.5.0"
     "tslib" "2.6.2"
 
+"@nestjs/axios@^3.0.0":
+  "integrity" "sha512-ULdH03jDWkS5dy9X69XbUVbhC+0pVnrRcj7bIK/ytTZ76w7CgvTZDJqsIyisg3kNOiljRW/4NIjSf3j6YGvl+g=="
+  "resolved" "https://registry.npmjs.org/@nestjs/axios/-/axios-3.0.0.tgz"
+  "version" "3.0.0"
+
 "@nestjs/cli@^10.0.0":
   "integrity" "sha512-jQtG47keLsACt7b4YwJbTBYRm90n82gJpMaiR1HGAyQ9pccbctjSYu592eT4bxqkUWxPgBE3mpNynXj7dWAfrw=="
   "resolved" "https://registry.npmjs.org/@nestjs/cli/-/cli-10.1.18.tgz"
@@ -1101,7 +1106,7 @@
     "webpack" "5.88.2"
     "webpack-node-externals" "3.0.0"
 
-"@nestjs/common@^10.0.0", "@nestjs/common@^8.0.0 || ^9.0.0 || ^10.0.0", "@nestjs/common@^9.3.8 || ^10.0.0":
+"@nestjs/common@^10.0.0", "@nestjs/common@^7.0.0 || ^8.0.0 || ^9.0.0 || ^10.0.0", "@nestjs/common@^8.0.0 || ^9.0.0 || ^10.0.0", "@nestjs/common@^9.3.8 || ^10.0.0":
   "integrity" "sha512-cUtCRXiUstDmh4bSBhVbq4cI439Gngp4LgLGLBmd5dqFQodfXKnSD441ldYfFiLz4rbUsnoMJz/8ZjuIEI+B7A=="
   "resolved" "https://registry.npmjs.org/@nestjs/common/-/common-10.2.7.tgz"
   "version" "10.2.7"
@@ -1508,6 +1513,13 @@
   "integrity" "sha512-U3PUjAudAdJBeC2pgN8uTIKgxrb4nlDF3SF0++EldXQvQBGkpFZMSnwQiIoDU77tv45VgNkl/L4ouD+rEomujw=="
   "resolved" "https://registry.npmjs.org/@types/json-schema/-/json-schema-7.0.14.tgz"
   "version" "7.0.14"
+
+"@types/kafkajs@^1.9.0":
+  "integrity" "sha512-R9VDNbiw+vNfxWjjFHUrLMF/Dfc7asGXzKtYUwI4FaT24Chf5ZNkfvce54p4dkLMxPcsrEsVazAK0Jp2ib4Zxw=="
+  "resolved" "https://registry.npmjs.org/@types/kafkajs/-/kafkajs-1.9.0.tgz"
+  "version" "1.9.0"
+  dependencies:
+    "kafkajs" "*"
 
 "@types/long@^4.0.0":
   "integrity" "sha512-MqTGEo5bj5t157U6fA/BiDynNkn0YknVdh48CMPkTSpFTVmvao5UQmm7uEF6xBEo7qIMAlY/JSleYaE6VOdpaA=="
@@ -2124,6 +2136,15 @@
   "integrity" "sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q=="
   "resolved" "https://registry.npmjs.org/asynckit/-/asynckit-0.4.0.tgz"
   "version" "0.4.0"
+
+"axios@^1.3.1", "axios@^1.5.1":
+  "integrity" "sha512-Q28iYCWzNHjAm+yEAot5QaAMxhMghWLFVf7rRdwhUI+c2jix2DUXjAHXVi+s1ibs3mjPO/cCgbA++3BjD0vP/A=="
+  "resolved" "https://registry.npmjs.org/axios/-/axios-1.5.1.tgz"
+  "version" "1.5.1"
+  dependencies:
+    "follow-redirects" "^1.15.0"
+    "form-data" "^4.0.0"
+    "proxy-from-env" "^1.1.0"
 
 "babel-jest@^29.0.0", "babel-jest@^29.7.0":
   "integrity" "sha512-BrvGY3xZSwEcCzKvKsCi2GgHqDqsYkOP4/by5xCgIwGXQxIEh+8ew3gmrE1y7XRR6LHZIj6yLYnUi/mm2KXKBg=="
@@ -3267,6 +3288,11 @@
   "resolved" "https://registry.npmjs.org/flatted/-/flatted-3.2.9.tgz"
   "version" "3.2.9"
 
+"follow-redirects@^1.15.0":
+  "integrity" "sha512-1VzOtuEM8pC9SFU1E+8KfTjZyMztRsgEfwQl44z8A25uy13jSzTj6dyK2Df52iV0vgHCfBwLhDWevLn95w5v6Q=="
+  "resolved" "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.15.3.tgz"
+  "version" "1.15.3"
+
 "fork-ts-checker-webpack-plugin@8.0.0":
   "integrity" "sha512-mX3qW3idpueT2klaQXBzrIM/pHw+T0B/V9KHEvNrqijTq9NFnMZU6oreVxDYcf33P8a5cW+67PjodNHthGnNVg=="
   "resolved" "https://registry.npmjs.org/fork-ts-checker-webpack-plugin/-/fork-ts-checker-webpack-plugin-8.0.0.tgz"
@@ -4289,6 +4315,11 @@
   optionalDependencies:
     "graceful-fs" "^4.1.6"
 
+"kafkajs@*", "kafkajs@^2.2.4":
+  "integrity" "sha512-j/YeapB1vfPT2iOIUn/vxdyKEuhuY2PxMBvf5JWux6iSaukAccrMtXEY/Lb7OvavDhOWME589bpLrEdnVHjfjA=="
+  "resolved" "https://registry.npmjs.org/kafkajs/-/kafkajs-2.2.4.tgz"
+  "version" "2.2.4"
+
 "keyv@^4.5.3":
   "integrity" "sha512-oxVHkHR/EJf2CNXnWxRLW6mg7JyCCUcG0DtEGmL2ctUo1PNTin1PUil+r/+4r5MpVgC/fn1kjsx7mjSujKqIpw=="
   "resolved" "https://registry.npmjs.org/keyv/-/keyv-4.5.4.tgz"
@@ -5082,6 +5113,11 @@
     "forwarded" "0.2.0"
     "ipaddr.js" "1.9.1"
 
+"proxy-from-env@^1.1.0":
+  "integrity" "sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg=="
+  "resolved" "https://registry.npmjs.org/proxy-from-env/-/proxy-from-env-1.1.0.tgz"
+  "version" "1.1.0"
+
 "pump@^3.0.0":
   "integrity" "sha512-LwZy+p3SFs1Pytd/jYct4wpv49HiYCqd9Rlc5ZVdk0V+8Yzv6jR5Blk3TRmPL1ft69TxP0IMZGJ+WPFU2BFhww=="
   "resolved" "https://registry.npmjs.org/pump/-/pump-3.0.0.tgz"
@@ -5309,7 +5345,7 @@
   dependencies:
     "queue-microtask" "^1.2.2"
 
-"rxjs@^7.1.0", "rxjs@^7.2.0", "rxjs@^7.5.5", "rxjs@^7.8.1", "rxjs@7.8.1":
+"rxjs@^6.0.0 || ^7.0.0", "rxjs@^7.1.0", "rxjs@^7.2.0", "rxjs@^7.5.5", "rxjs@^7.8.1", "rxjs@7.8.1":
   "integrity" "sha512-AA3TVj+0A2iuIoQkWEK/tqFjBq2j+6PO6Y0zJcvzLAFhEFIO3HL0vls9hWLncZbAAbK0mar7oZ4V079I/qPMxg=="
   "resolved" "https://registry.npmjs.org/rxjs/-/rxjs-7.8.1.tgz"
   "version" "7.8.1"
